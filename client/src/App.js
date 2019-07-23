@@ -3,7 +3,6 @@ import {Route} from 'react-router-dom';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
 import Home from './Movies/Home';
-
 import SavedList from './Movies/SavedList';
 
 const App = () => {
@@ -17,8 +16,8 @@ const App = () => {
     <div>
       <SavedList exact list={savedList} />
       <Route exact path = '/' component ={Home}/>
-      <Route exact path = '/movies' component ={MovieList}/>
-      <Route path = '/movies/:id' component ={Movie}/>
+      <Route exact path = '/movies' render ={props => <MovieList {...props} movielist={MovieList}/>}/>
+      <Route path = '/movies/:id' render ={props => <Movie {...props} movie={Movie}/>}/>
     </div>
   );
 };
